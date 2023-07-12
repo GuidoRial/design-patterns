@@ -35,7 +35,7 @@ The code that uses the factory method (often called the client code) doesn’t s
 1. The **product** declares the interface, which is common to all objects that can be produced by the creator and its subclasses
 2. **Concrete products** are different implementations of the product interface
 3. The **Creator** class declares the factory method that returns new product objects. It's important that the return type of this product mehtods matches the product interface. You can declare the factory method as abstract to force all subclasses to implement their own versions of the method. As an alternative, the base factory method can return some default product type.
-4. **Concrete creators** override the basefactory method so it returns a different type of produt.
+4. **Concrete creators** override the basefactory method so it returns a different type of product.
 
 ![image-4](image-4.png)
 
