@@ -200,3 +200,169 @@ Client: Testing the same client code with the second factory type...
 The result of the product B2.
 The result of the B2 collaborating with the (The result of the product A2.)
 ```
+
+```ts
+interface FurnitureFactory {
+  createChair(): Chair;
+  createSofa(): Sofa;
+  createCoffeeTable(): CoffeeTable;
+}
+
+interface Chair {
+  sitOn(): void;
+}
+interface Sofa {
+  sitOn(): void;
+}
+interface CoffeeTable {
+  putOn(): void;
+}
+
+// Implementing the concrete product classes for each furniture type
+
+// Victorian Furniture Factory
+class VictorianChair implements Chair {
+  sitOn(): void {
+    console.log('Sitting on a Victorian chair.');
+  }
+}
+
+class VictorianSofa implements Sofa {
+  sitOn(): void {
+    console.log('Sitting on a Victorian sofa.');
+  }
+}
+
+class VictorianCoffeeTable implements CoffeeTable {
+  putOn(): void {
+    console.log('Putting something on a Victorian coffee table.');
+  }
+}
+
+// Modern Furniture Factory
+class ModernChair implements Chair {
+  sitOn(): void {
+    console.log('Sitting on a Modern chair.');
+  }
+}
+
+class ModernSofa implements Sofa {
+  sitOn(): void {
+    console.log('Sitting on a Modern sofa.');
+  }
+}
+
+class ModernCoffeeTable implements CoffeeTable {
+  putOn(): void {
+    console.log('Putting something on a Modern coffee table.');
+  }
+}
+
+// Art Deco Furniture Factory
+class ArtDecoChair implements Chair {
+  sitOn(): void {
+    console.log('Sitting on an Art Deco chair.');
+  }
+}
+
+class ArtDecoSofa implements Sofa {
+  sitOn(): void {
+    console.log('Sitting on an Art Deco sofa.');
+  }
+}
+
+class ArtDecoCoffeeTable implements CoffeeTable {
+  putOn(): void {
+    console.log('Putting something on an Art Deco coffee table.');
+  }
+}
+// Concrete Victorian Furniture Factory
+class VictorianFurnitureFactory implements FurnitureFactory {
+  createChair(): Chair {
+    return new VictorianChair();
+  }
+
+  createSofa(): Sofa {
+    return new VictorianSofa();
+  }
+
+  createCoffeeTable(): CoffeeTable {
+    return new VictorianCoffeeTable();
+  }
+}
+
+// Concrete Modern Furniture Factory
+class ModernFurnitureFactory implements FurnitureFactory {
+  createChair(): Chair {
+    return new ModernChair();
+  }
+
+  createSofa(): Sofa {
+    return new ModernSofa();
+  }
+
+  createCoffeeTable(): CoffeeTable {
+    return new ModernCoffeeTable();
+  }
+}
+
+// Concrete Art Deco Furniture Factory
+class ArtDecoFurnitureFactory implements FurnitureFactory {
+  createChair(): Chair {
+    return new ArtDecoChair();
+  }
+
+  createSofa(): Sofa {
+    return new ArtDecoSofa();
+  }
+
+  createCoffeeTable(): CoffeeTable {
+    return new ArtDecoCoffeeTable();
+  }
+}
+
+function clientCode(factory: FurnitureFactory) {
+  const chair = factory.createChair();
+  const sofa = factory.createSofa();
+  const coffeeTable = factory.createCoffeeTable();
+
+  chair.sitOn();
+  sofa.sitOn();
+  coffeeTable.putOn();
+}
+
+console.log(
+  'Client: Testing client code with the Victorian furniture factory...'
+);
+clientCode(new VictorianFurnitureFactory());
+
+console.log('');
+
+console.log('Client: Testing client code with the Modern furniture factory...');
+clientCode(new ModernFurnitureFactory());
+
+console.log('');
+
+console.log(
+  'Client: Testing client code with the Art Deco furniture factory...'
+);
+clientCode(new ArtDecoFurnitureFactory());
+```
+
+```
+Client: Testing client code with the Victorian furniture factory...
+Sitting on a Victorian chair.
+Sitting on a Victorian sofa.
+Putting something on a Victorian coffee table.
+
+Client: Testing client code with the Modern furniture factory...
+Sitting on a Modern chair.
+Sitting on a Modern sofa.
+Putting something on a Modern coffee table.
+
+Client: Testing client code with the Art Deco furniture factory...
+Sitting on an Art Deco chair.
+Sitting on an Art Deco sofa.
+Putting something on an Art Deco coffee table.
+
+```
