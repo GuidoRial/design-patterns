@@ -114,3 +114,4 @@ Adaptee: .eetpadA eht fo roivaheb laicepS
 Client: But I can work with it via the Adapter:
 Adapter: (TRANSLATED) Special behavior of the Adaptee.
 ```
+

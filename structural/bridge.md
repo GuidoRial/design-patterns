@@ -1,6 +1,6 @@
 # Bridge
 
-Bridge is a structural design pattern that lets you split a large class or a set of closely related classes into two separate hierarchies—abstraction and implementation—which can be developed independently of each other.
+The Bridge Design Pattern is a structural design pattern that separates an object's abstraction from its implementation. It allows you to create a hierarchy of abstractions and implementations independently, and then bridge them together, providing flexibility and extensibility. This pattern is particularly useful when you have multiple variations of both abstractions and implementations, and you want to avoid a combinatorial explosion of classes.
 
 ![Alt text](image-8.png)
 
@@ -149,4 +149,78 @@ ConcreteImplementationA: Here's the result on the platform A.
 
 ExtendedAbstraction: Extended operation with:
 ConcreteImplementationB: Here's the result on the platform B.
+```
+
+## Another example
+
+Abstraction: This defines the interface for the high-level abstraction. In our case, it's the Shape interface.
+
+```ts
+interface Shape {
+  draw(): void;
+}
+```
+
+Implementations: These are the concrete implementations for rendering. We'll define two rendering methods: SVGRenderer and CanvasRenderer.
+
+```ts
+interface Renderer {
+  renderCircle(): void;
+  renderSquare(): void;
+}
+
+class SVGRenderer implements Renderer {
+  renderCircle() {
+    console.log('Rendering circle using SVG');
+  }
+
+  renderSquare() {
+    console.log('Rendering square using SVG');
+  }
+}
+
+class CanvasRenderer implements Renderer {
+  renderCircle() {
+    console.log('Rendering circle using Canvas');
+  }
+
+  renderSquare() {
+    console.log('Rendering square using Canvas');
+  }
+}
+```
+
+Abstraction Implementations: These are concrete implementations of the abstraction that utilize the implementation hierarchy. We will create Circle and Square classes that implement the Shape interface and take a Renderer as a parameter.
+
+```ts
+class Circle implements Shape {
+  constructor(private renderer: Renderer) {}
+
+  draw() {
+    this.renderer.renderCircle();
+  }
+}
+
+class Square implements Shape {
+  constructor(private renderer: Renderer) {}
+
+  draw() {
+    this.renderer.renderSquare();
+  }
+}
+```
+
+Usage:
+
+Now, you can use the Bridge pattern to draw shapes using different rendering methods:
+
+```ts
+const svgRenderer = new SVGRenderer();
+const canvasRenderer = new CanvasRenderer();
+
+const circleSVG = new Circle(svgRenderer);
+const squareCanvas = new Square(canvasRenderer);
+
+circleSVG.draw(); // Output: Rendering circle using SVG
+squareCanvas.draw(); // Output: Rendering square using Canvas
 ```
