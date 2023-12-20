@@ -132,8 +132,6 @@ const factory = new FlyweightFactory([
 ]);
 factory.listFlyweights();
 
-// ...
-
 function addCarToPoliceDatabase(
   ff: FlyweightFactory,
   plates: string,
